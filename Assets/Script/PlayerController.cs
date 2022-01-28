@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public float shootRange;
 
     [Header("リロード機能のオン/オフ")]
-    public bool isReloadModeon;
+    public bool isReloadModeOn;
 
     [Header("リロード状態の制御")]
     public bool isReloading;
