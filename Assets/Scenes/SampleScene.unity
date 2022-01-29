@@ -247,10 +247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9940110fc88bc564c8bf362285feea57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzleFlashScale: {x: 0, y: 0, z: 0}
-  layerMasks: 
+  muzzleFlashScale: {x: 0.5, y: 0.5, z: 0.5}
+  layerMasks: 06000000
   layerMasksStr: []
-  playerController: {fileID: 0}
+  playerController: {fileID: 963194229}
 --- !u!4 &247293580
 Transform:
   m_ObjectHideFlags: 0
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Main Camera_Player
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -557,7 +557,7 @@ MonoBehaviour:
   bulletPower: 1
   shootInterval: 0.15
   shootRange: 5000
-  isReloadModeOn: 0
+  isReloadModeOn: 1
   isReloading: 0
 --- !u!1 &1177096294
 GameObject:
@@ -610,7 +610,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5b721e93c9ec1c44495b4caba1c7fcee, type: 2}
+  - {fileID: 2100000, guid: e75bc34a8e8ae3b4684cf1dcb40b7be8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -684,7 +684,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFlashPrefab: {fileID: 0}
-  hitEffectPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
+    type: 3}
 --- !u!4 &1975991928
 Transform:
   m_ObjectHideFlags: 0

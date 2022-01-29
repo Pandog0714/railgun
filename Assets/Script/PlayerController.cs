@@ -75,12 +75,7 @@ public class PlayerController : MonoBehaviour
     public void SetUpPlayer()
     {
         //maxHPの設定があるかの確認、初期HPを10として設定
-        if(maxHP == 0)
-        {
-            maxHP = 10;
-        }
-
-        hp = maxHP;
+        hp = maxHP = maxHP == 0 ? 10 : maxHP;
 
         //maxBulletの設定があるかの確認、初期値を10として設定
         if(maxBullet == 0)
