@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 162840404}
   - component: {fileID: 162840403}
   - component: {fileID: 162840402}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247293578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 16.6, z: -40.36}
+  m_LocalPosition: {x: 0.44, y: 10.1, z: -40.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 458956134}
   - component: {fileID: 458956133}
   - component: {fileID: 458956132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.72, z: -22.69}
+  m_LocalPosition: {x: 8.28, y: 7.83, z: -22.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -683,8 +683,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c466eb14eebfc734681ce81dd98ac31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzleFlashPrefab: {fileID: 0}
-  hitEffectPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
+  muzzleFlashPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
+    type: 3}
+  hitEffectPrefab: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3,
     type: 3}
 --- !u!4 &1975991928
 Transform:

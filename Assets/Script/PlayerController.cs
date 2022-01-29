@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public int BulletCount
     {
-        set => bulletCount = Mathf.Clamp(bulletCount, 0, maxBullet);
+        set => bulletCount = Mathf.Clamp(value, 0, maxBullet);
         get => bulletCount;
     }
 
@@ -84,6 +84,8 @@ public class PlayerController : MonoBehaviour
         }
 
         BulletCount = maxBullet;
+
+        Debug.Log(BulletCount);
     }
 
     /// <summary>
