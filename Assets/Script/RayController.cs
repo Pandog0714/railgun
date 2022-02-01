@@ -116,7 +116,7 @@ public class RayController : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, playerController.shootRange, LayerMask.GetMask(layerMasksStr)))
+        if (Physics.Raycast(ray, out hit, playerController.shootRange, LayerMask.GetMask(layerMasksStr))==true)
         {
 
             Debug.Log(hit.collider.gameObject.name);
