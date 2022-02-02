@@ -531,14 +531,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8f340418520384f908c8cfb7dcf15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  railMoveDurations:
-  - 3
-  - 3
-  - 3
-  pathTrans:
-  - {fileID: 422162348}
-  - {fileID: 1460563551}
-  - {fileID: 1141561571}
+  pathDataDetails:
+  - railMoveDuration: 2
+    pathTran: {fileID: 422162348}
+    isMissionTrigger: 0
+  - railMoveDuration: 2
+    pathTran: {fileID: 1460563551}
+    isMissionTrigger: 0
+  - railMoveDuration: 2
+    pathTran: {fileID: 1141561571}
+    isMissionTrigger: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

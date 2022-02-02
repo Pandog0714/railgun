@@ -1,17 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// レール移動用のパスデータ管理クラス
 /// </summary>
 public class RailPathData : MonoBehaviour
 {
-    [SerializeField, Tooltip("移動時間")]
-    private float[] railMoveDurations;
+    //RailPathData クラスの宣言フィールド
+    [System.Serializable]
+    public class PathDataDetail
+    {
+        [Tooltip("移動時間")]
+        public float railMoveDuration;
 
-    [SerializeField, Tooltip("移動地点とカメラの角度")]
-    private Transform[] pathTrans;
+        [Tooltip("移動地点とカメラの角度")]
+        public Transform pathTran;
+
+        [Tooltip("ミッションの発生有無。オンで発生")]
+        public bool isMissionTrigger;
+    }
+
+    [Header("経路用のパスデータ群")]
+    public PathDataDetail[] pathDataDetails;
 
     /// <summary>
     /// パスの移動時間の取得
@@ -19,7 +31,7 @@ public class RailPathData : MonoBehaviour
     /// <returns></returns>
     public float[] GetRailMoveDurations()
     {
-        return railMoveDurations;
+        return pathDataDetails.Select(x => x.railMoveDuration).ToArray();
     }
 
     /// <summary>
@@ -28,7 +40,15 @@ public class RailPathData : MonoBehaviour
     /// <returns></returns>
     public Transform[] GetPathTrans()
     {
-        return pathTrans;
+        return pathDataDetails.Select(x => x.pathTran).ToArray();
+    }
+
+    /// <summary>
+    /// ミッション発生有無の取得
+    /// </summary>
+    /// <returns></returns>
+    public bool[] GetIsMissionTriggers()
+    {
+        return pathDataDetails.Select(x => x.isMissionTrigger).ToArray();
     }
 }
-
