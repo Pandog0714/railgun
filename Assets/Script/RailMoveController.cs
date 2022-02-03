@@ -19,6 +19,30 @@ public class RailMoveController : MonoBehaviour
     private float[] moveDurations;
     private int pathCount;
 
+    private GameManager gameManager;
+
+    /// <summary>
+    /// RailMoveControllerの初期設定
+    /// </summary>
+    /// <param name="gameManager"></param>
+    public void SetUpRailMoveController(GameManager gameManager) 
+    {
+        //<= GameManagerより呼び出される
+        this.gameManager = gameManager;
+
+        //TODO 他にある場合は追記。必要に応じて引数を通じて外部から情報をもらうようにする
+    }
+
+
+    public void SetNextRailPathDate(RailPathData nextRailPathData)
+    {
+        //<= GameManagerより呼び出される
+        //目的地取得
+        currentRailPathData = nextRailPathData;
+
+        //移動開始
+        StartCoroutine(StartRailMove());
+    }
 
     void Start()
     {
@@ -172,7 +196,8 @@ public class RailMoveController : MonoBehaviour
         // 移動の一時停止
         PauseMove();
 
-        // TODO ミッションがあるか確認
+        // TODO ミッションがあるか確認(ミッションが発生するかゲームマネージャー側で判定を行う)
+        //gameManager.CheckMissionTrigger(PathCount);
 
 
         // Debug用  次のパスをセットして移動を実行
