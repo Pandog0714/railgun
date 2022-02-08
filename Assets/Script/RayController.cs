@@ -29,6 +29,7 @@ public class RayController : MonoBehaviour
     [SerializeField]
     private PlayerController playerController;
 
+    private EnemyController enemy;
 
     void Start()
     {
@@ -116,7 +117,7 @@ public class RayController : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, playerController.shootRange, LayerMask.GetMask(layerMasksStr))==true)
+        if (Physics.Raycast(ray, out hit, playerController.shootRange, LayerMask.GetMask(layerMasksStr)))
         {
 
             Debug.Log(hit.collider.gameObject.name);
@@ -127,25 +128,62 @@ public class RayController : MonoBehaviour
 
                 target = hit.collider.gameObject;
 
-
-                // TODO TryGetComponent の処理で敵や障害物などの情報を取得しつつ、判定をする
-
-
-                // TODO 演出
+                Debug.Log(target.name);
 
 
-                //　同じ対象の場合
+                ////*  ここから TODO を実装  *////
+
+
+                // TryGetComponent の処理で敵の情報を取得できるか判定をする
+                if (target.TryGetComponent(out enemy))
+                {
+
+                    // 敵の情報を取得できた場合、ダメージの情報を敵のクラスに渡す 
+                    enemy.TriggerEvent(playerController.bulletPower);
+
+                    // 演出
+                    PlayHitEffect(hit.point, hit.normal);
+                }
+            
+            //　同じ対象の場合
             }
             else if (target == hit.collider.gameObject)
             {
-                // TODO すでに情報があるので再取得はせずに判定のみする
 
-                // TODO 演出
+                // ダメージの情報を敵のクラスに渡す 
+                enemy.TriggerEvent(playerController.bulletPower);
+
+                // 演出
+                PlayHitEffect(hit.point, hit.normal);
 
             }
         }
 
         // 弾数を減らす
         playerController.CalcBulletCount(-1);
+    }
+
+    /// <summary>
+    /// ヒット演出
+    /// </summary>
+    /// <param name="effectPos"></param>
+    /// <param name="surfacePos"></param>
+    private void PlayHitEffect(Vector3 effectPos, Vector3 surfacePos)
+    {
+        //ヒット用のエフェクトが作成されているか確認する
+        if (hitEffectObj == null)
+        {   
+            //まだ作成されていない場合はヒット用のエフェクトを作成
+            hitEffectObj = Instantiate(EffectManager.instance.hitEffectPrefab, effectPos, Quaternion.identity);
+        }
+        else
+        {
+            //生成されている場合には、エフェクトを表示する位置と開店情報を更新
+            hitEffectObj.transform.position = effectPos;
+            hitEffectObj.transform.rotation = Quaternion.FromToRotation(Vector3.forward, surfacePos);
+
+            //エフェクトを表示
+            hitEffectObj.SetActive(true);
+        }
     }
 }
