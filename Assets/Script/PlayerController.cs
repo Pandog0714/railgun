@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private int bulletCount;
 
     [SerializeField, Header("最大HP値")]
-    private int maxHP;
+    private int maxHp;
 
     [SerializeField, Header("最大弾数値")]
     private int maxBullet;
@@ -54,11 +54,11 @@ public class PlayerController : MonoBehaviour
         set
         {
             hp = value;
-            hp = Mathf.Clamp(hp, 0, maxHP);
+            hp = Mathf.Clamp(hp, 0, maxHp);
         }
         get
         {
-            return maxHP;
+            return maxHp;
         }
     }
     void Start()
@@ -74,8 +74,8 @@ public class PlayerController : MonoBehaviour
     //外部クラスからの呼び出しを想定してpublicで宣言
     public void SetUpPlayer()
     {
-        //maxHPの設定があるかの確認、初期HPを10として設定
-        hp = maxHP = maxHP == 0 ? 10 : maxHP;
+        //maxHpの設定があるかの確認、初期HPを10として設定
+        hp = maxHp = maxHp == 0 ? 10 : maxHp;
 
         //maxBulletの設定があるかの確認、初期値を10として設定
         if(maxBullet == 0)
@@ -92,9 +92,9 @@ public class PlayerController : MonoBehaviour
     /// HPの計算と更新
     /// </summary>
     /// <param name="amout"></param>
-    public void CalcHP(int amout)
+    public void CalcHp(int amount)
     {
-        hp = Mathf.Clamp(hp += amout, 0, maxHP);
+        hp = Mathf.Clamp(hp += amount, 0, maxHp);
 
         //確認でき次第コメントアウト
         Debug.Log("現在のHp :" + hp);

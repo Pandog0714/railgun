@@ -166,7 +166,7 @@ public class EnemyController : MonoBehaviour
     {
         isAttack = true;
 
-        //player.CalcHp(-attackPower);
+        player.CalcHp(-attackPower);
 
         if (anim)
         {
