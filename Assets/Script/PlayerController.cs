@@ -78,12 +78,7 @@ public class PlayerController : MonoBehaviour
         hp = maxHp = maxHp == 0 ? 10 : maxHp;
 
         //maxBulletの設定があるかの確認、初期値を10として設定
-        if(maxBullet == 0)
-        {
-            maxBullet = 10;
-        }
-
-        BulletCount = maxBullet;
+        BulletCount = maxBullet = maxBullet == 0 ? 10 : maxBullet;
 
         Debug.Log(BulletCount);
     }
