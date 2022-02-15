@@ -231,7 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   railMoveController: {fileID: 1397723517}
   originRailPathDate: {fileID: 828942481}
-  isMissionTriggers: 
+  isMissionTriggers: 0000
 --- !u!4 &688550543
 Transform:
   m_ObjectHideFlags: 0
@@ -388,13 +388,13 @@ MonoBehaviour:
   pathDataDetails:
   - railMoveDuration: 2
     pathTran: {fileID: 422162348}
-    isMissionTrigger: 0
+    isMissionTrigger: 1
   - railMoveDuration: 2
     pathTran: {fileID: 1460563551}
     isMissionTrigger: 1
   - railMoveDuration: 2
     pathTran: {fileID: 1141561571}
-    isMissionTrigger: 0
+    isMissionTrigger: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleFlashPrefab: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3,
     type: 3}
-  hitEffectPrefab: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3,
+  hitEffectPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
 --- !u!4 &1975991928
 Transform:

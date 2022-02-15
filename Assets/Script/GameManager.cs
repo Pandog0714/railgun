@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         //次に再生するレール移動の目的地と経路のパスを設定
         railMoveController.SetNextRailPathDate(originRailPathDate);
 
-        //TODO 経路の準備が完了するのを待つ
+        //TODO 経路の準備が完了するのを待つ(Start メソッドの戻り値を IEnumerator に変更してコルーチンメソッドに変える)
 
         //TODO ゲームの状態をプレイ中に変更する
     }
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         else
         {
             //ミッションなし。次のパスへ移動再開
-            railMoveController. CountUp();
+            railMoveController.CountUp();
         }
     }
 }

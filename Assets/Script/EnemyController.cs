@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     private GameObject lookTarget;
 
     [SerializeField]
-    private OffMeshLinkType enemyNo;
+    private int enemyNo;
 
     [SerializeField]
     private int hp;
@@ -51,9 +51,9 @@ public class EnemyController : MonoBehaviour
     public void SetUpEnemy(PlayerController playerController, GameManager gameManager)
     {
         lookTarget = playerController.gameObject;
-        //this gameManager = gameManager;
+        this.gameManager = gameManager;
 
-        //TryGetComponent(out anim);
+        TryGetComponent(out anim);
 
         //NavMeshを利用しているかの判定
         if(TryGetComponent(out agent))
@@ -212,7 +212,7 @@ public class EnemyController : MonoBehaviour
         hp -= damage;
 
         // アニメーションの設定がある場合
-        if (anim) anim.ResetTrigger("Attack");
+        if(anim) anim.ResetTrigger("Attack");
 
         if (hp <= 0)
         {
@@ -225,7 +225,7 @@ public class EnemyController : MonoBehaviour
             }
 
             // 攻撃の準備をしている場合
-            if (attackCoroutine != null)
+            if(attackCoroutine != null)
             {
 
                 // 処理を止める
@@ -242,7 +242,7 @@ public class EnemyController : MonoBehaviour
         {
 
             // アニメーションの設定がある場合
-            if (anim) anim.SetTrigger("Damage");
+            if(anim) anim.SetTrigger("Damage");
         }
     }
 

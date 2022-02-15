@@ -199,7 +199,7 @@ public class RailMoveController : MonoBehaviour
         PauseMove();
 
         // TODO ミッションがあるか確認(ミッションが発生するかゲームマネージャー側で判定を行う)
-        //gameManager.CheckMissionTrigger(PathCount);
+        gameManager.CheckMissionTrigger(pathCount);
 
 
         // Debug用  次のパスをセットして移動を実行
