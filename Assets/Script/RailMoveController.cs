@@ -25,18 +25,20 @@ public class RailMoveController : MonoBehaviour
     /// RailMoveControllerの初期設定
     /// </summary>
     /// <param name="gameManager"></param>
-    public void SetUpRailMoveController(GameManager gameManager) 
+    public void SetUpRailMoveController(GameManager gameManager)         //<= GameManagerより呼び出される
     {
-        //<= GameManagerより呼び出される
         this.gameManager = gameManager;
 
         //TODO 他にある場合は追記。必要に応じて引数を通じて外部から情報をもらうようにする
     }
 
-
-    public void SetNextRailPathDate(RailPathData nextRailPathData)
+    /// <summary>
+    /// 次に再生するレール移動の目的地と経路のパスを取得して設定
+    /// </summary>
+    /// <param name="nextRailPathData"></param>
+    public void SetNextRailPathDate(RailPathData nextRailPathData)        //<= GameManagerより呼び出される
     {
-        //<= GameManagerより呼び出される
+
         //目的地取得
         currentRailPathData = nextRailPathData;
 
@@ -44,11 +46,11 @@ public class RailMoveController : MonoBehaviour
         StartCoroutine(StartRailMove());
     }
 
-    void Start()
-    {
+    //void Start()
+    //{
         // Debug 用  レール移動の開始
-        StartCoroutine(StartRailMove());
-    }
+    //    StartCoroutine(StartRailMove());
+    //}
 
     /// <summary>
     /// レール移動の開始
@@ -175,8 +177,8 @@ public class RailMoveController : MonoBehaviour
         tweenMove = railMoveTarget.transform.DOPath(targetPaths, duration).SetEase(Ease.Linear).OnWaypointChange((waypointIndex) => CheckArrivalDestination(waypointIndex));
 
         // カメラの回転
-        tweenRotation = railMoveTarget.transform.DORotate(currentRailPathData.GetPathTrans()[pathCount].eulerAngles, duration).SetEase(Ease.Linear);
-        Debug.Log($" 回転角度 :  { currentRailPathData.GetPathTrans()[pathCount].eulerAngles } ");
+        tweenRotation = railMoveTarget.transform.DORotate(currentRailPathData.pathDataDetails[pathCount].pathTran.eulerAngles, duration).SetEase(Ease.Linear);
+        Debug.Log($" 回転角度 :  { currentRailPathData.pathDataDetails[pathCount].pathTran.eulerAngles } ");
     }
 
     /// <summary>
@@ -201,6 +203,6 @@ public class RailMoveController : MonoBehaviour
 
 
         // Debug用  次のパスをセットして移動を実行
-        CountUp();
+        //CountUp();
     }
 }

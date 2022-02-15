@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private RailPathData originRailPathDate;
 
     //Debug用
-    //[SerializeField, Header("パスにおけるミッションの発生有無")]
+    [SerializeField, Header("パスにおけるミッションの発生有無")]
     private bool[] isMissionTriggers;
 
 
