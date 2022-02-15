@@ -111,7 +111,7 @@ public class EnemyController : MonoBehaviour
             // 攻撃用のメソッドを登録
             SetAttackCoroutine();
 
-            Debug.Log("プレイヤー　感知済");
+            Debug.Log("プレイヤー 感知済");
 
             // プレイヤーの情報がないなら
         }

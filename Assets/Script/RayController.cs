@@ -52,7 +52,7 @@ public class RayController : MonoBehaviour
             StartCoroutine(playerController.ReloadBullet());
         }
 
-        // 発射判定(弾数が残っており、リロード実行中でない場合)　押しっぱなしで発射できる
+        // 発射判定(弾数が残っており、リロード実行中でない場合) 押しっぱなしで発射できる
         if (playerController.BulletCount > 0 && !playerController.isReloading && Input.GetMouseButton(0))
         {
 
@@ -145,7 +145,7 @@ public class RayController : MonoBehaviour
                     PlayHitEffect(hit.point, hit.normal);
                 }
             
-            //　同じ対象の場合
+            // 同じ対象の場合
             }
             else if (target == hit.collider.gameObject)
             {

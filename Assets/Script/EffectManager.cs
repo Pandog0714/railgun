@@ -15,9 +15,12 @@ public class EffectManager : MonoBehaviour
 
     //TODO ’Ç‰Á
 
+
     //Enemy—p
 
+
     //‹¤’Ê
+
 
     private void Awake()
     {
