@@ -27,7 +27,7 @@ public class EventGenerator : MonoBehaviour
     {
         for (int i = 0; i < enemyPrefabs.Length; i++)
         {
-            //GenerateEvent(enemyPrefabs[i], eventTrans[i]);
+            GenerateEnemy(enemyPrefabs[i], eventTrans[i]);
         }
     }
 
@@ -36,6 +36,6 @@ public class EventGenerator : MonoBehaviour
         EnemyController enemy = Instantiate(enemyPrefab, eventTran.position, enemyPrefab.transform.rotation);
         enemy.SetUpEnemy(playerController, gameManager);
 
-        //gameManager.AddEnemyList(enemy);
+        gameManager.AddEnemyList(enemy);
     }
 }

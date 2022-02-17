@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
     {
 
         // クリア条件を満たすまで監視(currentMissionDuration 変数には、敵の数か、残り時間が入る)
-        while (currentMissionDuration > 0)
+        while(currentMissionDuration > 0)
         {
 
             // クリア条件が時間経過の場合

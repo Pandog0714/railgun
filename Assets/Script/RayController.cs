@@ -34,7 +34,7 @@ public class RayController : MonoBehaviour
     {
         // Layer の情報を文字列に変換し、Raycast メソッドで利用しやすい情報を変数として作成しておく
         layerMasksStr = new string[layerMasks.Length];
-        for (int i = 0; i < layerMasks.Length; i++)
+        for(int i = 0; i < layerMasks.Length; i++)
         {
             layerMasksStr[i] = LayerMask.LayerToName(layerMasks[i]);
         }

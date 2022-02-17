@@ -234,7 +234,7 @@ public class EnemyController : MonoBehaviour
             }
 
             // エネミーの情報を外部クラスの List で管理している場合には、List から削除
-            //gameManager.RemoveEnemyList(this);
+            gameManager.RemoveEnemyList(this);
 
             Destroy(gameObject, 1.5f);
         }
