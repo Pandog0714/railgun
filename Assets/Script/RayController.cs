@@ -131,6 +131,9 @@ public class RayController : MonoBehaviour
                 // TryGetComponent の処理で敵の情報を取得できるか判定をする
                 if(target.TryGetComponent(out enemy))
                 {
+                    //Debug
+                    Debug.Log(enemy);
+
 
                     // 敵の情報を取得できた場合、ダメージの情報を敵のクラスに渡す 
                     enemy.TriggerEvent(playerController.bulletPower);
