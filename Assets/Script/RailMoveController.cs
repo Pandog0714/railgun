@@ -36,7 +36,7 @@ public class RailMoveController : MonoBehaviour
     /// 次に再生するレール移動の目的地と経路のパスを取得して設定
     /// </summary>
     /// <param name="nextRailPathData"></param>
-    public void SetNextRailPathDate(RailPathData nextRailPathData)        //<= GameManagerより呼び出される
+    public void SetNextRailPathData(RailPathData nextRailPathData)        //<= GameManagerより呼び出される
     {
 
         //目的地取得
