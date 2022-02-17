@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     /// <param name="index"></param>
     public void CheckMissionTrigger(int index)
     {
-        if (isMissionTriggers[index])
+        if(isMissionTriggers[index])
         {
             //Mission発生
             PreparateMission(originRailPathData.pathDataDetails[index].missionEventDetail);
@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
         {
 
             // クリア条件が時間経過の場合
-            if (clearConditionsType == ClearConditionsType.TimeUp)
+            if(clearConditionsType == ClearConditionsType.TimeUp)
             {
 
                 // カウントダウン
@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void ClearEnemiesList()
     {
-        if (enemiesList.Count > 0)
+        if(enemiesList.Count > 0)
         {
             for (int i = 0; i < enemiesList.Count; i++)
             {

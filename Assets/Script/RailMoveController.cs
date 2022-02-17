@@ -132,7 +132,7 @@ public class RailMoveController : MonoBehaviour
     {
 
         // 残っているパスがない場合
-        if (pathCount >= currentRailPathData.GetPathTrans().Length)
+        if(pathCount >= currentRailPathData.GetPathTrans().Length)
         {
 
             // DOTween を停止
@@ -157,7 +157,7 @@ public class RailMoveController : MonoBehaviour
         Vector3[] targetPaths;
 
         // パスのカウント数に応じて分岐してパスを設定
-        if (pathCount == 0)
+        if(pathCount == 0)
         {
             targetPaths = new Vector3[2] { railMoveTarget.position, paths[pathCount] };
         }
@@ -188,7 +188,7 @@ public class RailMoveController : MonoBehaviour
     private void CheckArrivalDestination(int waypointIndex)
     {
 
-        if (waypointIndex == 0)
+        if(waypointIndex == 0)
         {
             return;
         }

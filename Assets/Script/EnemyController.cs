@@ -68,7 +68,7 @@ public class EnemyController : MonoBehaviour
             agent.speed = moveSpeed;
 
             // アニメがある場合には再生
-            if (anim)
+            if(anim)
             {
                 anim.SetBool("Walk", true);
             }
@@ -81,7 +81,7 @@ public class EnemyController : MonoBehaviour
     {
 
         // エネミーを対象(カメラ)の方向を向ける
-        if (lookTarget)
+        if(lookTarget)
         {
             Vector3 direction = lookTarget.transform.position - transform.position;
             direction.y = 0;
@@ -91,7 +91,7 @@ public class EnemyController : MonoBehaviour
         }
 
         // 目的地を更新
-        if (lookTarget != null && agent != null)
+        if(lookTarget != null && agent != null)
         {
             agent.destination = lookTarget.transform.position;
         }
@@ -99,13 +99,13 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (isAttack)
+        if(isAttack)
         {
             return;
         }
 
         // プレイヤーの情報を保持しており、攻撃中でないなら
-        if (player != null)
+        if(player != null)
         {
 
             // 攻撃用のメソッドを登録
@@ -117,7 +117,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            if (other.transform.parent.TryGetComponent(out player))
+            if(other.transform.parent.TryGetComponent(out player))
             {
 
                 // 攻撃用のメソッドを登録
@@ -144,7 +144,7 @@ public class EnemyController : MonoBehaviour
     {
 
         // プレイヤーを感知済みのときに、攻撃範囲内にプレイヤーがいなくなったら
-        if (player != null)
+        if(player != null)
         {
 
             // 初期化
@@ -168,7 +168,7 @@ public class EnemyController : MonoBehaviour
 
         player.CalcHp(-attackPower);
 
-        if (anim)
+        if(anim)
         {
             anim.SetTrigger("Attack");
         }
@@ -204,7 +204,7 @@ public class EnemyController : MonoBehaviour
     /// <param name="damage"></param>
     private void CalcDamage(int damage)
     {
-        if (isDead)
+        if(isDead)
         {
             return;
         }
@@ -214,11 +214,11 @@ public class EnemyController : MonoBehaviour
         // アニメーションの設定がある場合
         if(anim) anim.ResetTrigger("Attack");
 
-        if (hp <= 0)
+        if(hp <= 0)
         {
             isDead = true;
 
-            if (anim)
+            if(anim)
             {
                 anim.SetBool("Walk", false);
                 anim.SetBool("Down", true);

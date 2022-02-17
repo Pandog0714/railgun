@@ -46,15 +46,14 @@ public class RayController : MonoBehaviour
 
 
         // リロード判定(弾数 0 でリロード機能ありの場合)
-        if (playerController.BulletCount == 0 && playerController.isReloadModeOn && Input.GetMouseButtonDown(0))
+        if(playerController.BulletCount == 0 && playerController.isReloadModeOn && Input.GetMouseButtonDown(0))
         {
             StartCoroutine(playerController.ReloadBullet());
         }
 
         // 発射判定(弾数が残っており、リロード実行中でない場合) 押しっぱなしで発射できる
-        if (playerController.BulletCount > 0 && !playerController.isReloading && Input.GetMouseButton(0))
+        if(playerController.BulletCount > 0 && !playerController.isReloading && Input.GetMouseButton(0))
         {
-
             // 発射時間の計測
             StartCoroutine(ShootTimer());
         }
@@ -66,12 +65,12 @@ public class RayController : MonoBehaviour
     /// <returns></returns>
     private IEnumerator ShootTimer()
     {
-        if (!isShooting)
+        if(!isShooting)
         {
             isShooting = true;
 
             // 発射エフェクトの表示。初回のみ生成し、２回目はオンオフで切り替える
-            if (muzzleFlashObj == null)
+            if(muzzleFlashObj == null)
             {
                 // 発射口の位置に RayController ゲームオブジェクトを配置する
                 muzzleFlashObj = Instantiate(EffectManager.instance.muzzleFlashPrefab, transform.position, transform.rotation);
@@ -91,7 +90,7 @@ public class RayController : MonoBehaviour
 
             muzzleFlashObj.SetActive(false);
 
-            if (hitEffectObj != null)
+            if(hitEffectObj != null)
             {
                 hitEffectObj.SetActive(false);
             }
@@ -116,25 +115,21 @@ public class RayController : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, playerController.shootRange, LayerMask.GetMask(layerMasksStr)))
+        if(Physics.Raycast(ray, out hit, playerController.shootRange, LayerMask.GetMask(layerMasksStr)))
         {
 
             Debug.Log(hit.collider.gameObject.name);
 
             // 同じ対象を攻撃しているか確認。対象がいなかったか、同じ対象でない場合
-            if (target == null || target != hit.collider.gameObject)
+            if(target == null || target != hit.collider.gameObject)
             {
 
                 target = hit.collider.gameObject;
 
                 Debug.Log(target.name);
 
-
-                ////*  ここから TODO を実装  *////
-
-
                 // TryGetComponent の処理で敵の情報を取得できるか判定をする
-                if (target.TryGetComponent(out enemy))
+                if(target.TryGetComponent(out enemy))
                 {
 
                     // 敵の情報を取得できた場合、ダメージの情報を敵のクラスに渡す 
@@ -146,7 +141,7 @@ public class RayController : MonoBehaviour
             
             // 同じ対象の場合
             }
-            else if (target == hit.collider.gameObject)
+            else if(target == hit.collider.gameObject)
             {
 
                 // ダメージの情報を敵のクラスに渡す 
@@ -170,7 +165,7 @@ public class RayController : MonoBehaviour
     private void PlayHitEffect(Vector3 effectPos, Vector3 surfacePos)
     {
         //ヒット用のエフェクトが作成されているか確認する
-        if (hitEffectObj == null)
+        if(hitEffectObj == null)
         {   
             //まだ作成されていない場合はヒット用のエフェクトを作成
             hitEffectObj = Instantiate(EffectManager.instance.hitEffectPrefab, effectPos, Quaternion.identity);
