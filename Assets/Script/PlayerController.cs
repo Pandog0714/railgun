@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// プレイヤー情報の制御クラス
+/// プレイヤー情報の管理クラス
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
-    //現在のHP
-    private int hp;
+    private int hp;                // 現在のHp値
+    private int bulletCount;       // 現在の弾数値
 
-    //現在の弾数値
-    private int bulletCount;
-
-    [SerializeField, Header("最大HP値")]
+    [SerializeField, Header("最大Hp値")]
     private int maxHp;
 
     [SerializeField, Header("最大弾数値")]
@@ -37,8 +34,12 @@ public class PlayerController : MonoBehaviour
     [Header("リロード状態の制御")]
     public bool isReloading;
 
+    [SerializeField]
+    private UIManager uiManagar;
+
+
     /// <summary>
-    /// 弾丸用のプロパティ
+    /// 弾数用のプロパティ
     /// </summary>
     public int BulletCount
     {
@@ -46,56 +47,44 @@ public class PlayerController : MonoBehaviour
         get => bulletCount;
     }
 
-    /// <summary>
-    /// HP用のプロパティ(のちに設定)
-    /// </summary>
-    public int HpProperty
-    {
-        set
-        {
-            hp = value;
-            hp = Mathf.Clamp(hp, 0, maxHp);
-        }
-        get
-        {
-            return maxHp;
-        }
-    }
+
+
     void Start()
     {
-        //デバック用
-        SetUpPlayer();    
+        // Debug 用
+        SetUpPlayer();
     }
 
     /// <summary>
     /// プレイヤー情報の初期設定
     /// </summary>
-    
-    //外部クラスからの呼び出しを想定してpublicで宣言
     public void SetUpPlayer()
     {
-        //maxHpの設定があるかの確認、初期HPを10として設定
+
+        // maxHp の設定があるか確認。なければ初期値 10 でセットして hp を設定
         hp = maxHp = maxHp == 0 ? 10 : maxHp;
 
-        //maxBulletの設定があるかの確認、初期値を10として設定
+        // maxBullet の設定があるか確認。なければ初期値 10 でセットして 弾数を設定
         BulletCount = maxBullet = maxBullet == 0 ? 10 : maxBullet;
 
-        Debug.Log(BulletCount);
+        // UIにライフ用アイコンを最大HP数だけ生成する
+        uiManagar.SetPlayerInfo(maxHp);
+
     }
 
     /// <summary>
     /// HPの計算と更新
     /// </summary>
-    /// <param name="amout"></param>
     public void CalcHp(int amount)
     {
         hp = Mathf.Clamp(hp += amount, 0, maxHp);
 
-        //確認でき次第コメントアウト
-        Debug.Log("現在のHp :" + hp);
+        Debug.Log("現在のHp : " + hp);
 
-        //ToDo HP 表記の更新
-        if (hp < 0)
+        // HP 表示の更新
+        uiManagar.UpdateDisplayLife(hp);
+
+        if(hp <= 0)
         {
             Debug.Log("Game Over");
         }
@@ -110,7 +99,6 @@ public class PlayerController : MonoBehaviour
 
         BulletCount += amout;
 
-        // UI で弾数が確認できるようになったらコメントアウトします
         Debug.Log("現在の弾数 : " + BulletCount);
 
         // TODO 弾数のUI表示更新
@@ -129,8 +117,7 @@ public class PlayerController : MonoBehaviour
         // リロード
         BulletCount = maxBullet;
 
-        // UI で弾数が確認できるようになったらコメントアウトします
-        Debug.Log("リロード");                         
+        Debug.Log("リロード");
 
 
         // TODO 弾数のUI表示更新
