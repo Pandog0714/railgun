@@ -26,11 +26,24 @@ public class GameManager : MonoBehaviour
 
     private int currentMissionDuration;
 
+    [Header("現在のゲームの進行状態")]
+    public GameState currentGameState;
+
+
+    // TODO 初期武器登録
+
+
+    // TODO 武器取得イベント用の設定
+
+
+    // TODO 初期武器設定
+
 
     // Start is called before the first frame upData
-    private void Start()
+    private IEnumerator Start()
     {
-        //TODO ゲームの状態を準備する
+        //ゲームの状態を準備する
+        currentGameState = GameState.Wait;
 
         //TODO ルート用の経路情報を設定
 
@@ -47,8 +60,10 @@ public class GameManager : MonoBehaviour
         railMoveController.SetNextRailPathData(originRailPathData);
 
         //TODO 経路の準備が完了するのを待つ(Start メソッドの戻り値を IEnumerator に変更してコルーチンメソッドに変える)
+        yield return new WaitUntil(() => railMoveController.GetMoveSetting());
 
-        //TODO ゲームの状態をプレイ中に変更する
+        //ゲームの状態をプレイ中に変更する
+        currentGameState = GameState.Play_Move;
     }
 
     /// <summary>
