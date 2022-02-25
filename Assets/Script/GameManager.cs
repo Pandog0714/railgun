@@ -30,20 +30,16 @@ public class GameManager : MonoBehaviour
     public GameState currentGameState;
 
 
-    // TODO 初期武器登録
-
-
-    // TODO 武器取得イベント用の設定
-
-
-    // TODO 初期武器設定
-
-
-    // Start is called before the first frame upData
     private IEnumerator Start()
     {
         //ゲームの状態を準備する
         currentGameState = GameState.Wait;
+
+        //TODO 初期武器登録
+
+        //TODO 武器取得イベント用の設定
+
+        //TODO 初期武器設定
 
         //TODO ルート用の経路情報を設定
 
@@ -59,7 +55,7 @@ public class GameManager : MonoBehaviour
         //次に再生するレール移動の目的地と経路のパスを設定
         railMoveController.SetNextRailPathData(originRailPathData);
 
-        //TODO 経路の準備が完了するのを待つ(Start メソッドの戻り値を IEnumerator に変更してコルーチンメソッドに変える)
+        //経路の準備が完了するのを待つ(Start メソッドの戻り値を IEnumerator に変更してコルーチンメソッドに変える)
         yield return new WaitUntil(() => railMoveController.GetMoveSetting());
 
         //ゲームの状態をプレイ中に変更する

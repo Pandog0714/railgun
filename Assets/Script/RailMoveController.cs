@@ -164,7 +164,7 @@ public class RailMoveController : MonoBehaviour
         }
         else
         {
-            targetPaths = new Vector3[2] { paths[pathCount - 1], paths[pathCount] };
+            targetPaths = new Vector3[2] { paths[pathCount -1], paths[pathCount] };
         }
 
         // パスの移動時間を設定
@@ -196,10 +196,10 @@ public class RailMoveController : MonoBehaviour
 
         Debug.Log("目標地点 到着 : " + pathCount + " 番目");
 
-        // 移動の一時停止
+        //移動の一時停止
         PauseMove();
 
-        // TODO ミッションがあるか確認(ミッションが発生するかゲームマネージャー側で判定を行う)
+        //ミッションがあるか確認(ミッションが発生するかゲームマネージャー側で判定を行う)
         gameManager.CheckMissionTrigger(pathCount);
 
 
