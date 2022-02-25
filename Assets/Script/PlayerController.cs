@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private UIManager uiManagar;
 
+    public int currentWeaponNo;
 
     /// <summary>
     /// 弾数用のプロパティ
@@ -139,6 +140,33 @@ public class PlayerController : MonoBehaviour
         // TODO 敵からの攻撃によって被弾した場合の処理
 
         // TODO ボスや敵の攻撃範囲を感知しないようにするためにタグでも判定するか、レイヤーを設定して回避する
+
+    }
+
+    /// <summary>
+    /// 武器(バレット)の情報を変更して武器切り替え
+    /// </summary>
+    /// <param name="weaponData"></param>
+    public void ChangeBulletData(WeaponData weaponData)
+    {
+
+        // 現在使用している武器の番号を保持
+        currentWeaponNo = weaponData.weaponNo;
+
+        // 武器の情報を各変数に設定
+        bulletPower = weaponData.bulletPower;
+        maxBullet = weaponData.maxBullet;
+
+        reloadTime = weaponData.reloadTime;
+        shootInterval = weaponData.shootInterval;
+        shootRange = weaponData.shootRange;
+
+        bulletCount = maxBullet;
+
+        // TODO すでに使用したことのある武器である場合
+
+
+        // TODO 弾数を前回の残弾数にする
 
     }
 }
