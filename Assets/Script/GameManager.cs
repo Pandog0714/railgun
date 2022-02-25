@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
         //TODO 初期武器設定
 
+
         //TODO ルート用の経路情報を設定
 
         // イベント生成機能の準備
