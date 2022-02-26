@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class WeaponDetail : MonoBehaviour
 {
-    public WeaponData weaponData;
+    public WeaponDataSO.WeaponData weaponData;
 }

@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
     /// 武器(バレット)の情報を変更して武器切り替え
     /// </summary>
     /// <param name="weaponData"></param>
-    public void ChangeBulletData(WeaponData weaponData)
+    public void ChangeBulletData(WeaponDataSO.WeaponData weaponData)
     {
 
         // 現在使用している武器の番号を保持

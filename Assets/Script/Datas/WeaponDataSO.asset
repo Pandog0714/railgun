@@ -12,4 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6c9bac9344df746814b41e757755e5, type: 3}
   m_Name: WeaponDataSO
   m_EditorClassIdentifier: 
-  weaponDatasList: []
+  weaponDatasList:
+  - weaponName: 
+    weaponNo: 0
+    maxBullet: 0
+    reloadTime: 0
+    bulletPower: 0
+    shootInterval: 0
+    shootRange: 0
+    weaponIcon: {fileID: 0}
+  - weaponName: 
+    weaponNo: 1
+    maxBullet: 0
+    reloadTime: 0
+    bulletPower: 0
+    shootInterval: 0
+    shootRange: 0
+    weaponIcon: {fileID: 0}
+  - weaponName: 
+    weaponNo: 2
+    maxBullet: 0
+    reloadTime: 0
+    bulletPower: 0
+    shootInterval: 0
+    shootRange: 0
+    weaponIcon: {fileID: 0}

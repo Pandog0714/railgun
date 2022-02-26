@@ -27,7 +27,7 @@ public class DataBaseManager : MonoBehaviour
     /// </summary>
     /// <param name="searchWeaponNo"></param>
     /// <returns></returns>
-    public WeaponData GetItemData(int searchWeaponNo)
+    public WeaponDataSO.WeaponData GetItemData(int searchWeaponNo)
     {
         return weaponDataSO.weaponDatasList.Find(x => x.weaponNo == searchWeaponNo);
     }
