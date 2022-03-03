@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         //初期武器設定
         playerController.ChangeBulletData(GameData.instance.weaponDatasList[0]);
 
-        //TODO ルート用の経路情報を設定
+        //TODO ルート用の経路情報を設定S
 
         // イベント生成機能の準備
         eventGenerator.SetUpEventGenerator(this, playerController);

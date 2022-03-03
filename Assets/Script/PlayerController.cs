@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     {       // 入れ子クラス
 
         public int bulletNo;　　　　 //武器の番号
-        public int bulletCount;　　　//武器の残弾数
+        public int bulletCount;   //武器の残弾数
 
         /// <summary>
         /// 残弾数の更新
@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public List<BulletCountData> bulletCountDatasList = new List<BulletCountData>();
+
 
     /// <summary>
     /// 弾数用のプロパティ
@@ -170,7 +171,6 @@ public class PlayerController : MonoBehaviour
     /// <param name="weaponData"></param>
     public void ChangeBulletData(WeaponDataSO.WeaponData weaponData)
     {
-
         // 現在使用している武器の番号を保持
         currentWeaponNo = weaponData.weaponNo;
 
@@ -185,23 +185,20 @@ public class PlayerController : MonoBehaviour
         bulletCount = maxBullet;
 
         // すでに使用したことのある武器である場合
-        if (bulletCountDatasList.Exists(x => x.bulletNo == currentWeaponNo))
+        if(bulletCountDatasList.Exists(x => x.bulletNo == currentWeaponNo))
         {
 
             // 弾数を前回の残弾数にする
             bulletCount = bulletCountDatasList.Find(x => x.bulletNo == currentWeaponNo).bulletCount;
         }
-
-
-        // TODO 弾数を前回の残弾数にする
-
     }
+
 
     public void UpdateCurrentBulletCountData(WeaponDataSO.WeaponData weaponData)
     {
 
         // まだ一度も使用している武器の残弾数を記録していないとき
-        if (!bulletCountDatasList.Exists(x => x.bulletNo == currentWeaponNo))
+        if(!bulletCountDatasList.Exists(x => x.bulletNo == currentWeaponNo))
         {
             // 新しくデータを作成して、記録
             bulletCountDatasList.Add(new BulletCountData { bulletNo = currentWeaponNo, bulletCount = bulletCount });
