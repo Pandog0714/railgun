@@ -30,6 +30,6 @@ public class GameData : MonoBehaviour
     {
         weaponDatasList.Add(weaponData);
 
-        //Debug.Log("•Ší’Ç‰Á : " + weaponData.weaponName);
+        Debug.Log("•Ší’Ç‰Á : " + weaponData.weaponName);
     }
 }

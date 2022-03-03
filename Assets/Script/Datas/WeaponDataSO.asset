@@ -13,27 +13,27 @@ MonoBehaviour:
   m_Name: WeaponDataSO
   m_EditorClassIdentifier: 
   weaponDatasList:
-  - weaponName: 
+  - weaponName: aa
     weaponNo: 0
-    maxBullet: 0
-    reloadTime: 0
-    bulletPower: 0
-    shootInterval: 0
-    shootRange: 0
+    maxBullet: 12
+    reloadTime: 0.5
+    bulletPower: 1
+    shootInterval: 0.15
+    shootRange: 5000
     weaponIcon: {fileID: 0}
-  - weaponName: 
+  - weaponName: bb
     weaponNo: 1
-    maxBullet: 0
-    reloadTime: 0
-    bulletPower: 0
-    shootInterval: 0
-    shootRange: 0
+    maxBullet: 30
+    reloadTime: 1
+    bulletPower: 2
+    shootInterval: 0.5
+    shootRange: 1000
     weaponIcon: {fileID: 0}
-  - weaponName: 
+  - weaponName: cc
     weaponNo: 2
-    maxBullet: 0
-    reloadTime: 0
-    bulletPower: 0
-    shootInterval: 0
-    shootRange: 0
+    maxBullet: 50
+    reloadTime: 0.1
+    bulletPower: 1
+    shootInterval: 0.15
+    shootRange: 2000
     weaponIcon: {fileID: 0}

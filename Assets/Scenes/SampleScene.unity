@@ -586,7 +586,7 @@ MonoBehaviour:
   playerController: {fileID: 963194229}
   eventGenerator: {fileID: 1931850182}
   enemiesList: []
-  currentGameState: 1
+  currentGameState: 0
 --- !u!4 &688550543
 Transform:
   m_ObjectHideFlags: 0
@@ -935,9 +935,7 @@ MonoBehaviour:
   isReloading: 0
   uiManagar: {fileID: 683794854}
   currentWeaponNo: 0
-  bulletCountDatasList:
-  - bulletNo: 0
-    bulletCount: 0
+  bulletCountDatasList: []
 --- !u!1 &1141561570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,15 +1403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2adb07610fddcfd47be63227ce16b80e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDatasList:
-  - weaponName: aa
-    weaponNo: 0
-    maxBullet: 12
-    reloadTime: 0.5
-    bulletPower: 1
-    shootInterval: 0.15
-    shootRange: 5000
-    weaponIcon: {fileID: 0}
+  weaponDatasList: []
 --- !u!4 &1983812538
 Transform:
   m_ObjectHideFlags: 0
