@@ -26,7 +26,7 @@ public class GameData : MonoBehaviour
     /// •Šíƒf[ƒ^‚Ì“o˜^
     /// </summary>
     /// <param name="weaponData"></param>
-    public void AddWeaponDate(WeaponDataSO.WeaponData weaponData)
+    public void AddWeaponData(WeaponDataSO.WeaponData weaponData)
     {
         weaponDatasList.Add(weaponData);
 

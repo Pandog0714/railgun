@@ -35,12 +35,13 @@ public class GameManager : MonoBehaviour
         //ゲームの状態を準備する
         currentGameState = GameState.Wait;
 
-        //TODO 初期武器登録
+        //初期武器登録
+        GameData.instance.AddWeaponData(DataBaseManager.instance.GetItemData(0));
 
         //TODO 武器取得イベント用の設定
 
-        //TODO 初期武器設定
-
+        //初期武器設定
+        playerController.ChangeBulletData(GameData.instance.weaponDatasList[0]);
 
         //TODO ルート用の経路情報を設定
 
