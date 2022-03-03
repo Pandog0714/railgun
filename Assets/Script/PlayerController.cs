@@ -39,6 +39,27 @@ public class PlayerController : MonoBehaviour
 
     public int currentWeaponNo;
 
+
+    [System.Serializable]
+    public class BulletCountData
+    {       // 入れ子クラス
+
+        public int bulletNo;　　　　 //武器の番号
+        public int bulletCount;　　　//武器の残弾数
+
+        /// <summary>
+        /// 残弾数の更新
+        /// </summary>
+        /// <param name="amount"></param>
+        public void SetBulletCount(int amount)
+        {
+            bulletCount = amount;
+            Debug.Log("残弾数更新");
+        }
+    }
+
+    public List<BulletCountData> bulletCountDatasList = new List<BulletCountData>();
+
     /// <summary>
     /// 弾数用のプロパティ
     /// </summary>
@@ -85,7 +106,7 @@ public class PlayerController : MonoBehaviour
         // HP 表示の更新
         uiManagar.UpdateDisplayLife(hp);
 
-        if(hp <= 0)
+        if (hp <= 0)
         {
             Debug.Log("Game Over");
         }
@@ -163,10 +184,35 @@ public class PlayerController : MonoBehaviour
 
         bulletCount = maxBullet;
 
-        // TODO すでに使用したことのある武器である場合
+        // すでに使用したことのある武器である場合
+        if (bulletCountDatasList.Exists(x => x.bulletNo == currentWeaponNo))
+        {
+
+            // 弾数を前回の残弾数にする
+            bulletCount = bulletCountDatasList.Find(x => x.bulletNo == currentWeaponNo).bulletCount;
+        }
 
 
         // TODO 弾数を前回の残弾数にする
 
+    }
+
+    public void UpdateCurrentBulletCountData(WeaponDataSO.WeaponData weaponData)
+    {
+
+        // まだ一度も使用している武器の残弾数を記録していないとき
+        if (!bulletCountDatasList.Exists(x => x.bulletNo == currentWeaponNo))
+        {
+            // 新しくデータを作成して、記録
+            bulletCountDatasList.Add(new BulletCountData { bulletNo = currentWeaponNo, bulletCount = bulletCount });
+        }
+        else
+        {
+            // 使用したことがある武器ですでにデータがある場合には、そのデータを見つけて上書きして記録
+            bulletCountDatasList.Find(x => x.bulletNo == currentWeaponNo).SetBulletCount(bulletCount);
+        }
+
+        // 武器の情報を設定
+        ChangeBulletData(weaponData);
     }
 }
