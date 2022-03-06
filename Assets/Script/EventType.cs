@@ -1,7 +1,7 @@
 /// <summary>
 /// ƒCƒxƒ“ƒg‚Ìí—Ş
 /// </summary>
-public enum EnemyType
+public enum EventType
 {
     Enemy,
     Boss,

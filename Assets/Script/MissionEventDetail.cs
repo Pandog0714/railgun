@@ -16,4 +16,10 @@ public class MissionEventDetail : MonoBehaviour
 
     [Header("敵のプレファブ")]
     public EnemyController[] enemyPrefabs;
+
+    [Header("発生するイベントの種類")]
+    public EventType[] eventTypes;
+
+    [Header("発生するイベントの番号")]
+    public int[] eventNos;
 }
