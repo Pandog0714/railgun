@@ -748,6 +748,7 @@ MonoBehaviour:
   eventGenerator: {fileID: 1931850182}
   enemiesList: []
   currentGameState: 0
+  weaponEventInfo: {fileID: 0}
 --- !u!4 &688550543
 Transform:
   m_ObjectHideFlags: 0
@@ -1593,6 +1594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1558797174}
   - component: {fileID: 1558797175}
+  - component: {fileID: 1558797176}
   m_Layer: 5
   m_Name: WeapomEventInfoSet
   m_TagString: Untagged
@@ -1636,6 +1638,33 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1558797176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558797173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c008ed1bb9bd86408db9051efad25bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData:
+    weaponName: 
+    weaponNo: 0
+    maxBullet: 0
+    reloadTime: 0
+    bulletPower: 0
+    shootInterval: 0
+    shootRange: 0
+    weaponIcon: {fileID: 0}
+  btnSubmit: {fileID: 1819026588}
+  btnCancel: {fileID: 1719487667}
+  txtWeaponName: {fileID: 330146859}
+  imgWeaponicon: {fileID: 965748542}
+  canvasGroup: {fileID: 1558797175}
+  isChooseWeapon: 0
 --- !u!1 &1719487665
 GameObject:
   m_ObjectHideFlags: 0

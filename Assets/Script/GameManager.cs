@@ -29,18 +29,22 @@ public class GameManager : MonoBehaviour
     [Header("現在のゲームの進行状態")]
     public GameState currentGameState;
 
+    [SerializeField]
+    private WeaponEventInfo weaponEventInfo;
+
 
     private IEnumerator Start()
     {
-        //ゲームの状態を準備する
+        // ゲームの状態を準備する
         currentGameState = GameState.Wait;
 
-        //初期武器登録
+        // 初期武器登録
         GameData.instance.AddWeaponData(DataBaseManager.instance.GetItemData(0));
 
-        //TODO 武器取得イベント用の設定
+        // 武器取得イベント用の設定
+        weaponEventInfo.IntializeWeaponEventInfo();
 
-        //初期武器設定
+        // 初期武器設定
         playerController.ChangeBulletData(GameData.instance.weaponDatasList[0]);
 
         //TODO ルート用の経路情報を設定S
@@ -48,19 +52,19 @@ public class GameManager : MonoBehaviour
         // イベント生成機能の準備
         eventGenerator.SetUpEventGenerator(this, playerController);
 
-        //RailMoveContrrollerの初期設定
+        // RailMoveContrrollerの初期設定
         railMoveController.SetUpRailMoveController(this);
 
-        //パスデータよりミッションの発生有無情報取得
+        // パスデータよりミッションの発生有無情報取得
         SetMissionTriggers();
 
-        //次に再生するレール移動の目的地と経路のパスを設定
+        // 次に再生するレール移動の目的地と経路のパスを設定
         railMoveController.SetNextRailPathData(originRailPathData);
 
-        //経路の準備が完了するのを待つ(Start メソッドの戻り値を IEnumerator に変更してコルーチンメソッドに変える)
+        // 経路の準備が完了するのを待つ(Start メソッドの戻り値を IEnumerator に変更してコルーチンメソッドに変える)
         yield return new WaitUntil(() => railMoveController.GetMoveSetting());
 
-        //ゲームの状態をプレイ中に変更する
+        // ゲームの状態をプレイ中に変更する
         currentGameState = GameState.Play_Move;
     }
 
@@ -108,11 +112,18 @@ public class GameManager : MonoBehaviour
         // Missionの時間設定
         currentMissionDuration = missionEventDetail.missionDuration;
 
-        // TODO 武器取得イベントか判定
-
-
-        // Mission内の各イベントの生成(敵、ギミック、トラップ、アイテムなどを生成)
-        eventGenerator.PrepareGenerateEnemies(missionEventDetail.enemyPrefabs, missionEventDetail.eventTrans);
+        // 武器取得イベントか判定
+        if(missionEventDetail.eventTypes[0] == EventType.Weapon)
+        {
+            // 武器の情報を取得してセット
+            //weaponEventInfo.SetWeaponData(DataBaseManager.instance.GetItemData(missionEventDetail.eventNos[0]));
+            weaponEventInfo.Show();
+        }
+        else
+        {
+            // Mission内の各イベントの生成(敵、ギミック、トラップ、アイテムなどを生成)
+            eventGenerator.PrepareGenerateEnemies(missionEventDetail.enemyPrefabs, missionEventDetail.eventTrans);
+        }
 
         // Mission開始
         StartCoroutine(StartMission(missionEventDetail.clearConditionsType));
@@ -153,8 +164,17 @@ public class GameManager : MonoBehaviour
                 currentMissionDuration--;
             }
 
-            // TODO 武器取得イベントかつ、武器選択のいずれかのボタンを押したら
+            //  武器取得イベントかつ、武器選択のいずれかのボタンを押したら
+            if(weaponEventInfo.gameObject.activeSelf && weaponEventInfo.isChooseWeapon)
+            {
+                //イベント終了
+                currentMissionDuration = 0;
 
+                weaponEventInfo.Hide();
+
+                Debug.Log("武器取得イベント終了");
+                yield break;
+            }
 
             yield return null;
         }
