@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
         if(missionEventDetail.eventTypes[0] == EventType.Weapon)
         {
             // •Ší‚Ìî•ñ‚ğæ“¾‚µ‚ÄƒZƒbƒg
-            //weaponEventInfo.SetWeaponData(DataBaseManager.instance.GetItemData(missionEventDetail.eventNos[0]));
+            weaponEventInfo.SetWeaponData(DataBaseManager.instance.GetItemData(missionEventDetail.eventNos[0]));
             weaponEventInfo.Show();
         }
         else

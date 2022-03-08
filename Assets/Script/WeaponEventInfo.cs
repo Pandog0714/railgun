@@ -66,7 +66,7 @@ public class WeaponEventInfo : MonoBehaviour
     /// •Ší‚Ìî•ñƒZƒbƒg
     /// </summary>
     /// <param name="weaponData"></param>
-    private void SetWeaponData(WeaponDataSO.WeaponData weaponData)
+    public void SetWeaponData(WeaponDataSO.WeaponData weaponData)
     {
         this.weaponData = weaponData;
 
