@@ -748,7 +748,7 @@ MonoBehaviour:
   eventGenerator: {fileID: 1931850182}
   enemiesList: []
   currentGameState: 0
-  weaponEventInfo: {fileID: 0}
+  weaponEventInfo: {fileID: 1558797176}
 --- !u!4 &688550543
 Transform:
   m_ObjectHideFlags: 0
