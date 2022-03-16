@@ -21,6 +21,8 @@ public class RailMoveController : MonoBehaviour
 
     private GameManager gameManager;
 
+    private int moveCount;
+
     /// <summary>
     /// RailMoveControllerの初期設定
     /// </summary>
@@ -65,15 +67,15 @@ public class RailMoveController : MonoBehaviour
         pathCount = 0;
 
         // 移動する地点を取得するための配列の初期化
-        paths = new Vector3[currentRailPathData.GetPathTrans().Length];
-        float totalTime = 0;
+        //paths = new Vector3[currentRailPathData.GetPathTrans().Length];
+        //float totalTime = 0;
 
         // 移動する位置情報と時間を順番に配列に取得
-        for (int i = 0; i < currentRailPathData.GetPathTrans().Length; i++)
-        {
-            paths[i] = currentRailPathData.GetPathTrans()[i].position;
-            totalTime += currentRailPathData.GetRailMoveDurations()[i];
-        }
+        //for (int i = 0; i < currentRailPathData.GetPathTrans().Length; i++)
+        //{
+        //    paths[i] = currentRailPathData.GetPathTrans()[i].position;
+        //    totalTime += currentRailPathData.GetRailMoveDurations()[i];
+        //}
 
         // 各パスごとの移動時間を取得
         moveDurations = currentRailPathData.GetRailMoveDurations();
@@ -143,11 +145,11 @@ public class RailMoveController : MonoBehaviour
             tweenRotation = null;
 
 
-            // TODO 移動完了に伴い、移動回数をカウントアップ
+            // 移動完了に伴い、移動回数をカウントアップ
+            moveCount++;
 
-
-            // TODO 移動先の確認。移動先が残っていない場合には、ゲームマネージャー側で分岐の確認(次のルート選定、移動先の分岐、ボス、クリアのいずれか)
-
+            // 移動先の確認。移動先が残っていない場合には、ゲームマネージャー側で分岐の確認(次のルート選定、移動先の分岐、ボス、クリアのいずれか)
+            gameManager.PreparateCheckNextBranch(moveCount);
 
             Debug.Log("分岐確認");
 
