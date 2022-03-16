@@ -47,7 +47,8 @@ public class GameManager : MonoBehaviour
         // 初期武器設定
         playerController.ChangeBulletData(GameData.instance.weaponDatasList[0]);
 
-        //TODO ルート用の経路情報を設定S
+        // ルート用の経路情報を設定
+        originRailPathData = DataBaseManager.instance.GetRailPathDataFromBranchNo(0, BranchDirectionType.NoBranch);
 
         // イベント生成機能の準備
         eventGenerator.SetUpEventGenerator(this, playerController);
@@ -230,5 +231,52 @@ public class GameManager : MonoBehaviour
     public void AddEnemyList(EnemyController enemy)
     {
         enemiesList.Add(enemy);
+    }
+
+    /// <summary>
+    /// ルート分岐確認の準備
+    /// </summary>
+    /// <param name="newtbranchNo"></param>
+    public void PreparateCheckNextBranch(int newtbranchNo)
+    {
+        StartCoroutine(CheckNextBranch(newtbranchNo));
+    }
+
+
+    /// <summary>
+    /// ルート分岐の判定
+    /// </summary>
+    /// <param name="nextStagePathDataNo"></param>
+    /// <returns></returns>
+    private IEnumerator CheckNextBranch(int nextStagePathDataNo)
+    {
+        if(DataBaseManager.instance.GetBranchDatasListCount(nextStagePathDataNo) == 1)
+        {
+            Debug.Log("分岐なしで次のルートへ");
+
+            // 分岐なしの場合、次の経路を登録
+            originRailPathData = DataBaseManager.instance.GetRailPathDataFromBranchNo(nextStagePathDataNo, BranchDirectionType.NoBranch);
+        }
+        else
+        {
+            // TODO 分岐がある場合、分岐イベントを発生させて、画面上に矢印のボタン表示
+            
+            // TODO 分岐を選択するまで待機
+
+            // TODO 選択した分岐ルートの設定
+
+        }
+
+        //ルート内のミッション情報を設定
+        SetMissionTriggers();
+
+        //経路を移動先に設定
+        railMoveController.SetNextRailPathData(originRailPathData);
+
+        //レール移動の経路と移動登録が完了するまで待機
+        yield return new WaitUntil(() => railMoveController.GetMoveSetting());
+
+        //ゲームの進行状態を移動中に変更する
+        currentGameState = GameState.Play_Move;
     }
 }
