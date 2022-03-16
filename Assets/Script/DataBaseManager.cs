@@ -45,7 +45,7 @@ public class DataBaseManager : MonoBehaviour
     /// <returns></returns>
     public RailPathData GetRailPathDataFromBranchNo(int nextStagePathDataNo, BranchDirectionType searchBranchDirectionType)
     {
-        return stagePathDataSO.stagePathDatasList[nextStagePathDataNo].branchDatasList.Find(x => x.branchDirectionType == searchBranchDirectionType == searchBranchDirectionType).railPathData;
+        return stagePathDataSO.stagePathDatasList[nextStagePathDataNo].branchDatasList.Find(x => x.branchDirectionType == searchBranchDirectionType).railPathData;
     }
 
     /// <summary>
